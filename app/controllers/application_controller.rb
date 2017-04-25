@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: 'test_8e89b9515bcfffead5b598f8e1',
+        username: '', #<-- insert your private API key between the single quotes
         password: '' 
       },
       body: {
