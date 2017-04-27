@@ -19,6 +19,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'pry'
 gem 'httparty'
 
+# Render static pages easily
+gem 'high_voltage'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
