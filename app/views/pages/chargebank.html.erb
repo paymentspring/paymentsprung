@@ -1,0 +1,9 @@
+<%= form_tag("/charge-bank", method: "post") do %>
+  <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount') %>
+  <%= number_field_tag('bank_account_number', nil, placeholder: 'Account Number') %>
+  <%= number_field_tag('bank_routing_number', nil, placeholder: 'Routing Number') %>
+  <%= text_field_tag('first_name', nil, placeholder: 'First Name') %>
+  <%= text_field_tag('last_name', nil, placeholder: 'Last Name') %>
+  <%= select_tag('bank_account_type', '<option>Checking</option><option>Savings</option>'.html_safe) %>
+  <%= submit_tag("Submit") %>
+<% end %>
