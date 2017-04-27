@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  def process_charge
+  def charge_card
 
     # generate token
     token_id = generate_token('credit_card', params[:card_holder], params[:card_number], params[:exp_month], params[:exp_year], params[:csc])
-
     # define params
     parameters = {
       basic_auth: {
@@ -34,8 +33,6 @@ class ApplicationController < ActionController::Base
       render status: 200, json: { success: true }
     end
   end
-
-
 
   def create_customer
 
@@ -79,7 +76,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #TODO: Think of a smarter way to handle API keys...
+        username: '', #<-- insert your public API key between the single quotes
         password: ''
       },
       body: {
