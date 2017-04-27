@@ -37,7 +37,7 @@ $(document).ready(function()
 
     // data members
     // --
-    var public_key = 'test_9793312bd44f4c2fee8d40baaa042177226a563a3cf6fe6becced0efba';
+    var public_key = '';//<-- Please enter your PaymentSpring public API key here
     var card_holder = $('#card_holder').val();
     var card_number = $('#card_number').val();
     var csc = $('#csc').val();
