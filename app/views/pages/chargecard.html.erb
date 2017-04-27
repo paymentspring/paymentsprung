@@ -1,11 +1,9 @@
-<div class="container">
-  <h1>Charge a card</h1>
-  <div class="hidden" id="response"></div>
-  <input type="text" id="amount" placeholder="Amount" autofocus/>
-  <input type="text" id="card_holder" placeholder="Name"/>
-  <input type="text" id="card_number" placeholder="Card Number" />
-  <input type="text" class="short" id="csc" placeholder="CSC" />
-  <input type="text" class="short" id="exp_month" placeholder="MM" />
-  <input type="text" class="short" id="exp_year" placeholder="YYYY" />
-  <button>DO IT</button>
-</div>
+<%= form_tag("/process-charge", method: "post") do %>
+  <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount') %>
+  <%= text_field_tag('card_holder', nil, placeholder: 'Name') %>
+  <%= number_field_tag('card_number', nil, placeholder: 'Card Number') %>
+  <%= number_field_tag('csc', nil, placeholder: 'CSC') %>
+  <%= number_field_tag('exp_month', nil, placeholder: 'MM')%>
+  <%= number_field_tag('exp_year', nil, placeholder: 'YYYY')%>
+  <%= submit_tag("Submit") %>
+<% end %>

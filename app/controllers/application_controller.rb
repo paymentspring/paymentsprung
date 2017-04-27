@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   def process_charge
 
+    # generate token
+    token_id = generate_token('credit_card', params[:card_holder], params[:card_number], params[:exp_month], params[:exp_year], params[:csc])
+
     # define params
     parameters = {
       basic_auth: {
@@ -13,7 +16,7 @@ class ApplicationController < ActionController::Base
         password: '' 
       },
       body: {
-        token: params['token']['id'],
+        token: token_id,
         amount: to_cents(params['amount'])
       }
     }
@@ -31,8 +34,37 @@ class ApplicationController < ActionController::Base
       render status: 200, json: { success: true }
     end
   end
-  
+
   private
+
+  def generate_token(token_type, card_owner_name, card_number, card_exp_month, card_exp_year, csc)
+
+    # define params
+    parameters = {
+      basic_auth: {
+        username: '', #TODO: Think of a smarter way to handle API keys...
+        password: ''
+      },
+      body: {
+        token_type: token_type,
+        card_owner_name: card_owner_name,
+        card_number: card_number,
+        card_exp_month: card_exp_month,
+        card_exp_year: card_exp_year,
+        csc: csc
+      }
+    }
+
+    # point request at paymentspring
+    url = 'https://api.paymentspring.com/api/v1/tokens'
+
+    # send the request to generate the token
+    response = HTTParty.send(:post, url, parameters)
+
+    # grab token
+    body = JSON.parse(response.body)
+    token_id = body['id']
+  end
 
   def to_cents(amount)
     (amount.to_f * 100).to_i
