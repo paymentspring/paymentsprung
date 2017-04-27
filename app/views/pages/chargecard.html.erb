@@ -1,4 +1,4 @@
-<%= form_tag("/process-charge", method: "post") do %>
+<%= form_tag("/charge-card", method: "post") do %>
   <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount') %>
   <%= text_field_tag('card_holder', nil, placeholder: 'Name') %>
   <%= number_field_tag('card_number', nil, placeholder: 'Card Number') %>

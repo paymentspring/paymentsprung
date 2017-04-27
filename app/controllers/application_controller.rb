@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  def process_charge
+  def charge_card
 
     # generate token
     token_id = generate_token('credit_card', params[:card_holder], params[:card_number], params[:exp_month], params[:exp_year], params[:csc])
-
     # define params
     parameters = {
       basic_auth: {
@@ -35,7 +34,62 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def charge_bank
 
+    # generate token
+    # define params
+    parameters = {
+      basic_auth: {
+        username: '', #<-- insert your public API key between the single quotes
+        password: ''
+      },
+      body: {
+        token_type: 'bank_account',
+        bank_account_number: params[:bank_account_number],
+        bank_routing_number: params[:bank_routing_number],
+        bank_account_holder_first_name: params[:first_name],
+        bank_account_holder_last_name: params[:last_name],
+        bank_account_type: params[:bank_account_type].downcase!
+      }
+    }
+
+    # point request at paymentspring
+    url = 'https://api.paymentspring.com/api/v1/tokens'
+
+    # send the request to generate the token
+    response = HTTParty.send(:post, url, parameters)
+
+    # grab token
+    body = JSON.parse(response.body)
+    token_id = body['id']
+    byebug
+
+    # charge bank
+    # define params
+    parameters = {
+      basic_auth: {
+        username: '', #<-- insert your private API key between the single quotes
+        password: '' 
+      },
+      body: {
+        token: token_id,
+        amount: to_cents(params['amount'])
+      }
+    }
+
+    # point the request at paymentspring
+    url = 'https://api.paymentspring.com/api/v1/charge'
+
+    # send the request to make the charge
+    response = HTTParty.send(:post, url, parameters)
+
+    # parse response
+    if response['errors'] && response['errors'].count
+      render status: 500, json: response['errors'].first
+    else
+      render status: 200, json: { success: true }
+    end
+  end
 
   def create_customer
 
@@ -79,7 +133,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #TODO: Think of a smarter way to handle API keys...
+        username: '', #<-- insert your public API key between the single quotes
         password: ''
       },
       body: {
