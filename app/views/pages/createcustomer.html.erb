@@ -1,1 +1,12 @@
-<h1>This is where you will create a customer.<h1>
+<%= form_tag("/create-customer", method: "post") do %>
+  <%= text_field_tag('company', nil, placeholder: 'Company Name') %>
+  <%= text_field_tag('first_name', nil, placeholder: 'First Name') %>
+  <%= text_field_tag('last_name', nil, placeholder: 'Last Name') %>
+  <%= text_field_tag('address', nil, placeholder: 'Address') %>
+  <%= text_field_tag('city', nil, placeholder: 'City') %>
+  <%= text_field_tag('state', nil, placeholder: 'State') %>
+  <%= text_field_tag('zip', nil, placeholder: 'Zipcode') %>
+  <%= text_field_tag('country', nil, placeholder: 'Country') %>
+  <%= text_field_tag('phone', nil, placeholder: 'Phone Number') %>
+  <%= submit_tag("Submit") %>
+<% end %>

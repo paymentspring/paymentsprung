@@ -35,6 +35,43 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
+  def create_customer
+
+    # define params
+    parameters = {
+      basic_auth: {
+        username: '',
+        password: ''
+      },
+      body: {
+        company: params[:company],
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        address_1: params[:address],
+        city: params[:city],
+        state: params[:state],
+        zip: params[:zip],
+        country: params[:country],
+        phone: params[:phone]
+      }
+    }
+
+    # point request at paymentspring
+    url = 'https://api.paymentspring.com/api/v1/customers'
+
+    # send the request
+    response = HTTParty.send(:post, url, parameters)
+
+    # parse response
+    if response['errors'] && response['errors'].count
+      render status: 500, json: response['errors'].first
+    else
+      render status: 200, json: { success: true }
+    end
+  end
+
   private
 
   def generate_token(token_type, card_owner_name, card_number, card_exp_month, card_exp_year, csc)
