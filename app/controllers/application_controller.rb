@@ -62,7 +62,6 @@ class ApplicationController < ActionController::Base
     # grab token
     body = JSON.parse(response.body)
     token_id = body['id']
-    byebug
 
     # charge bank
     # define params
