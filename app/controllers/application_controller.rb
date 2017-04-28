@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: Rails.application.private_api_key,
+        username: Rails.application.secrets.private_api_key,
         password: ''
       },
       body: {
