@@ -6,8 +6,19 @@ class ApplicationController < ActionController::Base
 
   def charge_card
 
+    # create body for tokenization
+    body = {
+      token_type: 'credit_card',
+      card_owner_name: params[:card_holder],
+      card_number: params[:card_number],
+      card_exp_month: params[:exp_month],
+      card_exp_year: params[:exp_year],
+      csc: params[:csc]
+    }
+
     # generate token
-    token_id = generate_token('credit_card', params[:card_holder], params[:card_number], params[:exp_month], params[:exp_year], params[:csc])
+    token_id = generate_token(body)
+
     # define params
     parameters = {
       basic_auth: {
@@ -36,38 +47,23 @@ class ApplicationController < ActionController::Base
 
   def charge_bank
 
-    # generate token
-    # define params
-    parameters = {
-      basic_auth: {
-        username: Rails.application.public_api_key,
-        password: ''
-      },
-      body: {
-        token_type: 'bank_account',
-        bank_account_number: params[:bank_account_number],
-        bank_routing_number: params[:bank_routing_number],
-        bank_account_holder_first_name: params[:first_name],
-        bank_account_holder_last_name: params[:last_name],
-        bank_account_type: params[:bank_account_type].downcase!
-      }
+    # create body for tokenization
+    body = {
+      token_type: 'bank_account',
+      bank_account_number: params[:bank_account_number],
+      bank_routing_number: params[:bank_routing_number],
+      bank_account_holder_first_name: params[:first_name],
+      bank_account_holder_last_name: params[:last_name],
+      bank_account_type: params[:bank_account_type].downcase!
     }
 
-    # point request at paymentspring
-    url = 'https://api.paymentspring.com/api/v1/tokens'
+    # generate token
+    token_id = generate_token(body)
 
-    # send the request to generate the token
-    response = HTTParty.send(:post, url, parameters)
-
-    # grab token
-    body = JSON.parse(response.body)
-    token_id = body['id']
-
-    # charge bank
     # define params
     parameters = {
       basic_auth: {
-        username: Rails.application.private_api_key,
+        username: Rails.application.secrets.private_api_key,
         password: '' 
       },
       body: {
@@ -127,7 +123,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def generate_token(token_type, card_owner_name, card_number, card_exp_month, card_exp_year, csc)
+  def generate_token(body)
 
     # define params
     parameters = {
@@ -135,16 +131,9 @@ class ApplicationController < ActionController::Base
         username: Rails.application.secrets.public_api_key,
         password: ''
       },
-      body: {
-        token_type: token_type,
-        card_owner_name: card_owner_name,
-        card_number: card_number,
-        card_exp_month: card_exp_month,
-        card_exp_year: card_exp_year,
-        csc: csc
-      }
+      body: body
     }
-
+    byebug
     # point request at paymentspring
     url = 'https://api.paymentspring.com/api/v1/tokens'
 
@@ -153,7 +142,7 @@ class ApplicationController < ActionController::Base
 
     # grab token
     body = JSON.parse(response.body)
-    token_id = body['id']
+    body['id']
   end
 
   def to_cents(amount)
