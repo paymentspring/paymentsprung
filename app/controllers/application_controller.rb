@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #<-- insert your private API key between the single quotes
+        username: Rails.application.secrets.private_api_key,
         password: '' 
       },
       body: {
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #<-- insert your public API key between the single quotes
+        username: Rails.application.public_api_key,
         password: ''
       },
       body: {
@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #<-- insert your private API key between the single quotes
+        username: Rails.application.private_api_key,
         password: '' 
       },
       body: {
@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '',
+        username: Rails.application.private_api_key,
         password: ''
       },
       body: {
@@ -133,7 +133,7 @@ class ApplicationController < ActionController::Base
     # define params
     parameters = {
       basic_auth: {
-        username: '', #<-- insert your public API key between the single quotes
+        username: Rails.application.secrets.public_api_key,
         password: ''
       },
       body: {
