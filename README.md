@@ -1,6 +1,6 @@
 # PaymentSprung
 
-PaymentSprung is a sample app used to demonstrate how easy it is to integrate PaymentSpring's API into an existing Rails project.
+PaymentSprung is a sample app demonstrating PaymentSpring's API.
 
 ## [1. Getting Started](#Getting-Started)
 
