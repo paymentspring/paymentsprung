@@ -126,6 +126,33 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def search_customers
+
+    # define params
+    parameters = {
+      basic_auth: {
+        username: Rails.application.secrets.private_api_key,
+        password: ''
+      },
+      body: {
+        search_term: params[:query]
+      }
+    }
+
+    # point request at paymentspring
+    url = 'https://api.paymentspring.com/api/v1/customers/search'
+
+    # send the request
+    response = HTTParty.send(:post, url, parameters)
+
+    # parse response
+    if response['errors'] && response['errors'].count
+      render status: 500, json: response['errors'].first
+    else
+      render status: 200, json: response
+    end
+  end
+
   private
 
   def generate_token(body)
