@@ -103,7 +103,12 @@ class ApplicationController < ActionController::Base
         state: params[:state],
         zip: params[:zip],
         country: params[:country],
-        phone: params[:phone]
+        phone: params[:phone],
+        fax: params[:fax],
+        website: params[:website],
+        card_number: params[:card_number],
+        card_exp_month: params[:card_exp_month],
+        card_exp_year: params[:card_exp_year]
       }
     }
 
