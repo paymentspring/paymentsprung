@@ -138,7 +138,6 @@ class ApplicationController < ActionController::Base
       },
       body: body
     }
-    byebug
     # point request at paymentspring
     url = 'https://api.paymentspring.com/api/v1/tokens'
 
