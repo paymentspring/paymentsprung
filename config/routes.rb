@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post 'charge-card', to: 'application#charge_card'
   post 'charge-bank', to: 'application#charge_bank'
   post 'create-customer', to: 'application#create_customer'
+  post 'search-customers', to: 'application#search_customers'
 end

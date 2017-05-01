@@ -1,0 +1,7 @@
+<div class="w3-container">
+  <h1>Search for customers</h1>
+  <%= form_tag("/search-customers", method: "post", class: "w3-container") do %>
+    <%= text_field_tag('query', nil, placeholder: 'Customer name, company name or ID', class: "w3-input") %>
+    <%= submit_tag("Search", class: "w3-button w3-teal w3-margin") %>
+  <% end %>
+</div>
