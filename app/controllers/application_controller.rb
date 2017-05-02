@@ -144,13 +144,17 @@ class ApplicationController < ActionController::Base
 
     # send the request
     response = HTTParty.send(:post, url, parameters)
+    body = JSON.parse(response.body)
 
     # parse response
-    if response['errors'] && response['errors'].count
-      render status: 500, json: response['errors'].first
-    else
-      render status: 200, json: response
+    @total_results = body['meta']['total_results']
+    @customers = []
+    body['list'].each do |customer|
+      @customers.push(customer)
     end
+
+    # render search page
+    render 'application/search-customers.html.erb'
   end
 
   private
