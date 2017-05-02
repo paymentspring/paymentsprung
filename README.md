@@ -8,7 +8,7 @@ PaymentSprung is a sample app demonstrating PaymentSpring's API.
 
 PaymentSprung requires Rails v5 or higher to run properly. To start, clone this repo wherever you'd like:
 
-`git clone https://github.com/nspenner/payment_sprung.git`
+`git clone https://github.com/paymentspring/paymentsprung.git`
 
 Before PaymentSprung will run correctly, you'll need to grab your [PaymentSpring API keys](https://manage.paymentspring.com/account), which can be found at the bottom of your account page on PaymentSpring's dashboard. If you don't have a PaymentSpring account yet, what are you waiting for? It's free!
 
