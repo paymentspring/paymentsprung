@@ -4,9 +4,9 @@
   <ul class="w3-ul w3-teal">
   <% @customers.each do |customer| %>
       <li class="w3-padding-large">
-        Company: <%= customer['company'] %><br>
-        Name: <%= customer['first_name'] + ' ' + customer['last_name'] %><br>
-        ID: <%= customer['id'] %>
+        Company: <%= customer[:company] %><br>
+        Name: <%= customer[:first_name] + ' ' + customer[:last_name] %><br>
+        ID: <%= customer[:id] %>
       </li>
   <% end %>
   </ul>

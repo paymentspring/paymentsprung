@@ -144,14 +144,11 @@ class ApplicationController < ActionController::Base
 
     # send the request
     response = HTTParty.send(:post, url, parameters)
-    body = JSON.parse(response.body)
+    body = JSON.parse(response.body, symbolize_names: true)
 
     # parse response
-    @total_results = body['meta']['total_results']
-    @customers = []
-    body['list'].each do |customer|
-      @customers.push(customer)
-    end
+    @total_results = body[:meta][:total_results]
+    @customers = body[:list]
 
     # render search page
     render 'application/search-customers.html.erb'
