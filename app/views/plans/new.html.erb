@@ -1,0 +1,11 @@
+<div class="w3-container">
+<h1>Create a plan</h1>
+  <%= form_tag("/plans/create", method: "post", class: "w3-container w3-card") do %>
+    <%= select_tag('frequency', '<option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option><option>Yearly</option>'.html_safe, prompt: "Choose Frequency", class: "w3-select") %>
+    <%= text_field_tag('name', nil, placeholder: 'Plan Name', class: "w3-input") %>
+    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "w3-input") %>
+    <!--REVIEW: The 'Day' field has a lot of options for input (just see API. What is our best way to handle it?-->
+    <%= date_field_tag('day', nil, placeholder: 'Day', class: "w3-input") %>
+    <%= submit_tag("Submit", class: "w3-button w3-teal w3-margin") %>
+  <% end %>
+</div>

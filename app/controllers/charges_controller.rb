@@ -103,11 +103,4 @@ class ChargesController < ApplicationController
     body = JSON.parse(response.body)
     body['id']
   end
-
-  # The PaymentSpring API expects an integer representation in cents, so we call
-  #    this method before sending any amounts
-  def to_cents(amount)
-    (amount.to_f * 100).to_i
-  end
-
 end
