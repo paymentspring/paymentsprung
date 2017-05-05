@@ -2,10 +2,6 @@
 
 PaymentSprung is a sample app demonstrating PaymentSpring's API.
 
-## [1. Getting Started](#Getting-Started)
-## [2. Integrating PaymentSpring Into Your Sites](#Integrating-Paymentspring-Into-Your-Sites)
-## [3. Next Steps](#Next-Steps)
-
 ## Getting Started
 
 PaymentSprung requires Rails v5 or higher to run properly. To start, clone this repo wherever you'd like:
