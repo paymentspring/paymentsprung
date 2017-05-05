@@ -97,7 +97,6 @@ class ChargesController < ApplicationController
 
     # send the request to generate the token
     response = HTTParty.send(:post, url, parameters)
-    byebug
 
     # grab token
     body = JSON.parse(response.body)
