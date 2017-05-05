@@ -1,7 +1,6 @@
 class CustomersController < ApplicationController
 
   def create
-
     # define params
     parameters = {
       basic_auth: {
