@@ -1,6 +1,6 @@
  <div class=w3-container>
   <h1>Charge a bank account</h1>
-  <%= form_tag("/charge-bank", method: "post", class: "w3-card w3-container") do %>
+  <%= form_tag("/charges/charge-bank", method: "post", class: "w3-card w3-container") do %>
     <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "w3-input") %>
     <%= number_field_tag('bank_account_number', nil, placeholder: 'Account Number', class: "w3-input") %>
     <%= number_field_tag('bank_routing_number', nil, placeholder: 'Routing Number', class: "w3-input") %>
