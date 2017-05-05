@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
   def charge_card
+
     # create body for tokenization
     body = {
       token_type: 'credit_card',
@@ -103,6 +104,8 @@ class ChargesController < ApplicationController
     body['id']
   end
 
+  # The PaymentSpring API expects an integer representation in cents, so we call
+  #    this method before sending any amounts
   def to_cents(amount)
     (amount.to_f * 100).to_i
   end
