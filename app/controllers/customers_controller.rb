@@ -80,10 +80,10 @@ class CustomersController < ApplicationController
     }
 
     # point request at paymentspring
-    url = 'https://api.paymentspring.com/api/v1/customers/' + params[:id].to_s
+    url = "https://api.paymentspring.com/api/v1/customers/#{params[:id]}"
 
     # send the request
-    response = HTTParty.send(:get, url, parameters)
+    response = HTTParty.get(url, parameters)
 
     # parse response
     @customer = JSON.parse(response.body, symbolize_names: true)
