@@ -43,11 +43,10 @@ class PlansController < ApplicationController
     }
 
     # point request at paymentspring
-    url = 'https://api.paymentspring.com/api/v1/plans/' + params[:id].to_s +
-          '/subscription/' + params[:customer_id].to_s
+    url = "https://api.paymentspring.com/api/v1/plans/#{params[:id]}/subscription/#{params[:customer_id]}"
 
     # send the request
-    response = HTTParty.send(:post, url, parameters)
+    response = HTTParty.post(url, parameters)
     # parse response
     if response.code == 201
       render plain: 'Success!'
