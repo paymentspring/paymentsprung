@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post 'customers/create', to: 'customers#create'
   post 'customers/results', to: 'customers#results'
   get 'customers/search'
+  get 'plans/new'
+  post 'plans/create'
 end
