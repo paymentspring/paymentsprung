@@ -4,7 +4,7 @@ PaymentSprung is a sample app demonstrating PaymentSpring's API.
 
 ## Getting Started
 
-PaymentSprung requires Rails v5 or higher to run properly. To start, clone this repo wherever you'd like:
+PaymentSprung was created using Rails v5. Running it with older versions may lead to unexpected results! To start, clone this repo wherever you'd like:
 
 `git clone https://github.com/paymentspring/paymentsprung.git`
 
