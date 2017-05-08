@@ -1,0 +1,9 @@
+<div class="w3-container">
+<h1>Subscribe a customer to a plan</h1>
+  <%= form_tag("/plans/subscribe", method: "post", class: "w3-container w3-card") do %>
+    <%= text_field_tag('id', nil, placeholder: 'Plan ID', class: "w3-input") %>
+    <%= text_field_tag('customer_id', nil, placeholder: 'Customer ID', class: "w3-input") %>
+    <%= text_field_tag('ends_after', nil, placeholder: 'Number of billings', class: "w3-input") %>
+    <%= submit_tag("Submit", class: "w3-button w3-teal w3-margin") %>
+  <% end %>
+</div>
