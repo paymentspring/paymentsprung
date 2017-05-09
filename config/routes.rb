@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get 'customers/show', to: 'customers#show'
   get 'plans/new'
   post 'plans/create'
-  get 'plans/newsubscribe'
-  post 'plans/subscribe', to: 'plans#subscribe'
+  get 'subscriptions/new'
+  post 'subscriptions/create', to: 'subscriptions#create'
 end
