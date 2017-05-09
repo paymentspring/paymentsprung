@@ -66,4 +66,26 @@ class CustomersController < ApplicationController
       @customers = body[:list]
     end
   end
+
+  def show
+    # define params
+    parameters = {
+      basic_auth: {
+        username: Rails.application.secrets.private_api_key,
+        password: ''
+      },
+      body: {
+        id: params[:id]
+      }
+    }
+
+    # point request at paymentspring
+    url = "https://api.paymentspring.com/api/v1/customers/#{params[:id]}"
+
+    # send the request
+    response = HTTParty.get(url, parameters)
+
+    # parse response
+    @customer = JSON.parse(response.body, symbolize_names: true)
+  end
 end
