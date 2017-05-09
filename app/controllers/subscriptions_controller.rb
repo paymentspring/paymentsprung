@@ -18,9 +18,9 @@ class SubscriptionsController < ApplicationController
 
     # send the request
     response = HTTParty.post(url, parameters)
-    
+
     # parse response
-    if response.code == 201
+    if response.success?
       render plain: 'Success!'
     elsif response.parsed_response.nil? || response.parsed_response == 'Not Found'
       render plain: 'Error: Response not found'
