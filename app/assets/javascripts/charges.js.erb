@@ -1,4 +1,4 @@
-$(document).ready(function()
+$(document).on('turbolinks:load', function()
 {
   function callback(response)
   {
@@ -23,17 +23,16 @@ $(document).ready(function()
     });
   }
 
-  $( '#card_form' ).on( 'submit', function(event)
+  $( '#card_form' ).submit(function(event)
   {
+    // Form submit events don't play nice with jsonp callbacks, so we prevent default behavior
+    event.preventDefault();
 
     // Clear any previous responses
     $( '#response' ).empty();
 
-    // Form submit events don't play nice with jsonp callbacks, so we prevent default behavior
-    event.preventDefault();
-
     // Grab data from form
-    var public_key = 'test_7b9056ac57145c1738cdd1aab370c9942189d18233a6208e8ad45dff44';
+    var public_key = '<%= Rails.application.secrets.public_api_key %>';
     var card_holder = $( '#card_holder' ).val();
     var card_number = $( '#card_number' ).val();
     var csc = $( '#csc' ).val();
