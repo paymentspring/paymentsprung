@@ -1,19 +1,5 @@
 class ChargesController < ApplicationController
   def charge_card
-
-    # create body for tokenization
-    body = {
-      token_type: 'credit_card',
-      card_owner_name: params[:card_holder],
-      card_number: params[:card_number],
-      card_exp_month: params[:exp_month],
-      card_exp_year: params[:exp_year],
-      csc: params[:csc]
-    }
-
-    # generate token
-    token_id = generate_token(body)
-
     # define params
     parameters = {
       basic_auth: {
@@ -21,7 +7,7 @@ class ChargesController < ApplicationController
         password: ''
       },
       body: {
-        token: token_id,
+        token: params['token']['id'],
         amount: to_cents(params['amount'])
       }
     }
@@ -33,10 +19,10 @@ class ChargesController < ApplicationController
     response = HTTParty.send(:post, url, parameters)
 
     # parse response
-    if response['errors'] && response['errors'].count
+    if response['errors']
       render status: 500, json: response['errors'].first
     else
-      render plain: 'Success!'
+      render json: JSON.parse(response.body)
     end
   end
 

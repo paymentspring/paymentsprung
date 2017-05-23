@@ -1,12 +1,13 @@
  <div class="w3-container">
- <h1>Charge a card</h1>
-  <%= form_tag("/charges/charge-card", method: "post", class: "w3-card w3-container") do %>
-    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "w3-input") %>
-    <%= text_field_tag('card_holder', nil, placeholder: 'Name', class: "w3-input") %>
-    <%= number_field_tag('card_number', nil, placeholder: 'Card Number', class: "w3-input") %>
-    <%= number_field_tag('csc', nil, placeholder: 'CSC', class: "w3-input") %>
-    <%= number_field_tag('exp_month', nil, placeholder: 'MM', class: "w3-input")%>
-    <%= number_field_tag('exp_year', nil, placeholder: 'YYYY', class: "w3-input")%>
-    <%= submit_tag("Submit", class: "w3-button w3-teal w3-margin") %>
-  <% end %>
+  <h1>Charge a card</h1>
+    <form id="card_form" class="w3-container w3-card">
+      <input type="text" id="amount" placeholder="00.00" class="w3-input" autofocus/>
+      <input type="text" id="card_holder"  placeholder="Name" class="w3-input" />
+      <input type="text" id="card_number" placeholder="Card Number" class="w3-input" />
+      <input type="text" id="csc" placeholder="CSC" class="w3-input" />
+      <input type="text" id="exp_month" placeholder="MM" class="w3-input" />
+      <input type="text" id="exp_year" placeholder="YYYY" class="w3-input" />
+      <input type="submit" class="w3-button w3-teal w3-margin">
+    </form>
+    <div id="response" class="w3-card w3-teal"></div>
 </div>
