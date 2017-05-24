@@ -19,27 +19,28 @@ $(document).on('turbolinks:load', function()
     // Generate token
     paymentspring.generateToken(public_key, card_number, csc, card_holder, exp_month, exp_year, callback);
   });
+
+  function callback(response)
+  {
+    var params = {
+      amount: $( '#amount' ).val(),
+      token: response
+    };
+
+    $.ajax({
+      url: '/charges/charge-card',
+      data: params,
+      type: 'POST',
+      success: function(data) {
+        $( '#response ').removeClass().addClass('w3-card w3-teal');
+        $( '#response' ).append('Success! Transaction status: ' + data.status);
+      },
+      error: function(data) {
+        var error = JSON.parse(data.responseText);
+        $ ( '#response ').removeClass().addClass('w3-card w3-red');
+        $ ( '#response' ).append('Error: ' + error.code + ': ' + error.message);
+      }
+    });
+  }
+
 });
-
-function callback(response)
-{
-  var params = {
-    amount: $( '#amount' ).val(),
-    token: response
-  };
-
-  $.ajax({
-    url: '/charges/charge-card',
-    data: params,
-    type: 'POST',
-    success: function(data) {
-      $( '#response ').removeClass().addClass('w3-card w3-teal');
-      $( '#response' ).append('Success! Transaction status: ' + data.status);
-    },
-    error: function(data) {
-      var error = JSON.parse(data.responseText);
-      $ ( '#response ').removeClass().addClass('w3-card w3-red');
-      $ ( '#response' ).append('Error: ' + error.code + ': ' + error.message);
-    }
-  });
-}
