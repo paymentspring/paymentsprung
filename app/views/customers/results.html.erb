@@ -1,9 +1,9 @@
-<div class="w3-container">
+<div class="container">
   <h1>Search Results</h1>
   <h4><%= @total_results %> results found: </h4>
-  <ul class="w3-ul w3-teal">
+  <ul">
   <% @customers.each do |customer| %>
-      <li class="w3-padding-large">
+      <li class="card">
         Company: <%= customer[:company] %><br>
         Name: <%= customer[:first_name] + ' ' + customer[:last_name] %><br>
         ID: <%= customer[:id] %><br>

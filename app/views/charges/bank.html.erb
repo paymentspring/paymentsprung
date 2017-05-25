@@ -1,12 +1,12 @@
- <div class=w3-container>
+ <div class=container>
   <h1>Charge a bank account</h1>
-  <%= form_tag("/charges/charge-bank", method: "post", class: "w3-card w3-container") do %>
-    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "w3-input") %>
-    <%= number_field_tag('bank_account_number', nil, placeholder: 'Account Number', class: "w3-input") %>
-    <%= number_field_tag('bank_routing_number', nil, placeholder: 'Routing Number', class: "w3-input") %>
-    <%= text_field_tag('first_name', nil, placeholder: 'First Name', class: "w3-input") %>
-    <%= text_field_tag('last_name', nil, placeholder: 'Last Name', class: "w3-input") %>
-    <%= select_tag('bank_account_type', '<option>Checking</option><option>Savings</option>'.html_safe, class: "w3-select") %>
-    <%= submit_tag("Submit", class: "w3-button w3-teal w3-margin") %>
+  <%= form_tag("/charges/charge-bank", method: "post", class: "form-group") do %>
+    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "form-control") %>
+    <%= number_field_tag('bank_account_number', nil, placeholder: 'Account Number', class: "form-control") %>
+    <%= number_field_tag('bank_routing_number', nil, placeholder: 'Routing Number', class: "form-control") %>
+    <%= text_field_tag('first_name', nil, placeholder: 'First Name', class: "form-control") %>
+    <%= text_field_tag('last_name', nil, placeholder: 'Last Name', class: "form-control") %>
+    <%= select_tag('bank_account_type', '<option>Checking</option><option>Savings</option>'.html_safe, class: "form-control") %>
+    <%= submit_tag("Submit", class: "btn btn-default") %>
   <% end %>
  </div>
