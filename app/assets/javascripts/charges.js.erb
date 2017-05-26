@@ -32,12 +32,12 @@ $(document).ready(function()
       data: params,
       type: 'POST',
       success: function(data) {
-        $( '#response ').removeClass().addClass('w3-card w3-teal');
+        $( '#response ').removeClass().addClass('card');
         $( '#response' ).append('Success! Transaction status: ' + data.status);
       },
       error: function(data) {
         var error = JSON.parse(data.responseText);
-        $ ( '#response ').removeClass().addClass('w3-card w3-red');
+        $ ( '#response ').removeClass().addClass('card red');
         $ ( '#response' ).append('Error: ' + error.code + ': ' + error.message);
       }
     });
