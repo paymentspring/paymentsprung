@@ -8,7 +8,13 @@ PaymentSprung was created using Rails v5. Running it with older versions may lea
 
 `git clone https://github.com/paymentspring/paymentsprung.git`
 
-Before PaymentSprung will run correctly, you'll need to grab your [PaymentSpring API keys](https://manage.paymentspring.com/account), which can be found at the bottom of your account page on PaymentSpring's dashboard. If you don't have a PaymentSpring account yet, [what are you waiting for](https://paymentspring.com/signup/)? It's free!
+Before PaymentSprung will run correctly, you'll need to grab your [PaymentSpring API keys](https://manage.paymentspring.com/account). Your unique private and public key are used to validate API requests, so we'll need to set these if we want our requests to work. The keys can be found at the bottom of your account page on PaymentSpring's dashboard:
+
+![PaymentSpring Account Tab Screenshot](/app/assets/images/ACCOUNT.png?raw-true "PaymentSpring API Key Screenshot")
+
+![PaymentSpring API Key Screenshot](/app/assets/images/API_KEY.png?raw=true "PaymentSpring API Key Screenshot")
+
+If you don't have a PaymentSpring account yet, [what are you waiting for](https://paymentspring.com/signup/)? It's free!
 
 **Note: you may need to regenerate your keys, as your private API key is only shown upon generation for security purposes.**
 
