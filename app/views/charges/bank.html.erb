@@ -1,0 +1,12 @@
+ <div class=container>
+  <h1>Charge a bank account</h1>
+  <%= form_tag("/charges/charge-bank", method: "post", class: "form-group") do %>
+    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "form-control") %>
+    <%= number_field_tag('bank_account_number', nil, placeholder: 'Account Number', class: "form-control") %>
+    <%= number_field_tag('bank_routing_number', nil, placeholder: 'Routing Number', class: "form-control") %>
+    <%= text_field_tag('first_name', nil, placeholder: 'First Name', class: "form-control") %>
+    <%= text_field_tag('last_name', nil, placeholder: 'Last Name', class: "form-control") %>
+    <%= select_tag('bank_account_type', '<option>Checking</option><option>Savings</option>'.html_safe, class: "form-control") %>
+    <%= submit_tag("Submit", class: "btn btn-default") %>
+  <% end %>
+ </div>

@@ -1,0 +1,19 @@
+.form-control {
+  margin-bottom: 10px;
+}
+
+.card {
+  background-color: lightseagreen;
+  color: white;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.card a{
+  color: white;
+  text-decoration: underline;
+}
+
+.red {
+  background-color: red;
+}

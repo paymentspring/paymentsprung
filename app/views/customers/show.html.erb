@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @customer[:id] %></h1>
+    <ul class="card">
+      <li>Company: <%= @customer[:company] %></li>
+      <li>Name: <%= @customer[:first_name] + ' ' + @customer[:last_name] %></li>
+      <li>Address 1: <%= @customer[:address_1] %></li>
+      <li>Address 2: <%= @customer[:address_2] %></li>
+      <li>City: <%= @customer[:city] %></li>
+      <li>State: <%= @customer[:state] %></li>
+      <li>Zipcode: <%= @customer[:zip] %></li>
+      <li>State: <%= @customer[:state] %></li>
+      <li>Email: <%= @customer[:email] %></li>
+      <li>Phone: <%= @customer[:phone] %></li>
+    </ul>
+</div>

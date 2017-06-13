@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PaymentSprung</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application"%>
+    <script type="text/javascript" src="https://paymentspring.com/js/paymentspring.js"></script>
+  </head>
+
+  <body>
+    <%= yield %>
+    <h4 align="center">Built using the <%= link_to 'PaymentSpring API', 'https://paymentspring.com/developers/'%></h4>
+  </body>
+</html>

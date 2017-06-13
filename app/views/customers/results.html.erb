@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Search Results</h1>
+  <h4><%= @total_results %> results found: </h4>
+  <ul">
+  <% @customers.each do |customer| %>
+      <li class="card">
+        Company: <%= customer[:company] %><br>
+        Name: <%= customer[:first_name] + ' ' + customer[:last_name] %><br>
+        ID: <%= customer[:id] %><br>
+        <%= link_to 'View more details', 'show?id=' + customer[:id].to_s  %>
+      </li>
+  <% end %>
+  </ul>
+</div>

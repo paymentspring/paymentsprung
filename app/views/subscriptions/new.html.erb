@@ -1,0 +1,9 @@
+<div class="container">
+<h1>Subscribe a customer to a plan</h1>
+  <%= form_tag("/subscriptions/create", method: "post", class: "form-group") do %>
+    <%= text_field_tag('id', nil, placeholder: 'Plan ID', class: "form-control") %>
+    <%= text_field_tag('customer_id', nil, placeholder: 'Customer ID', class: "form-control") %>
+    <%= text_field_tag('ends_after', nil, placeholder: 'Number of billings', class: "form-control") %>
+    <%= submit_tag("Submit", class: "btn btn-default") %>
+  <% end %>
+</div>

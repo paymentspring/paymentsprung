@@ -1,0 +1,10 @@
+<div class="container">
+<h1>Create a plan</h1>
+  <%= form_tag("/plans/create", method: "post", class: "form-group") do %>
+    <%= select_tag('frequency', '<option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option><option>Yearly</option>'.html_safe, prompt: "Choose Frequency", class: "form-control") %>
+    <%= text_field_tag('name', nil, placeholder: 'Plan Name', class: "form-control") %>
+    <%= number_field_tag('amount', nil, step: '0.01', placeholder: 'Amount', class: "form-control") %>
+    <%= date_field_tag('day', nil, placeholder: 'Day', class: "form-control") %>
+    <%= submit_tag("Submit", class: "btn btn-default") %>
+  <% end %>
+</div>

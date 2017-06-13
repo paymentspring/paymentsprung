@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Search for customers</h1>
+  <%= form_tag("/customers/results", method: "post", class: "form-group") do %>
+    <%= text_field_tag('query', nil, placeholder: 'Customer name, company name or ID', class: "form-control") %>
+    <%= submit_tag("Search", class: "btn btn-default") %>
+  <% end %>
+</div>
